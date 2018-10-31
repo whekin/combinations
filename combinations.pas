@@ -1,21 +1,22 @@
 ﻿program combinations;
-//ToDo: задается 4 числа, программа выводит все сочетания из двух элементов
-uses factorial; // fact
-
 const
     generalTotalityLength: integer = 4;
+    amountOfSampling: integer = 2;
 var
-    generalTotality: array [0..generalTotalityLength - 1] of integer;
-    quantity: integer;
+    generalTotality: array [1..generalTotalityLength] of integer;
+    i, j, k: integer;
 begin
-    quantity := fact(generalTotalityLength)
-                div (fact(2) * fact(generalTotalityLength - 2));
-    for var i := 0 to generalTotalityLength - 1 do
+    for i := 1 to generalTotalityLength do
         read(generalTotality[i]);
     
-    for var i := 0 to generalTotalityLength - 2 do
+    for i := 1 to generalTotalityLength - 1 do
     begin
-        for var j := i to generalTotalityLength - 1 do
-            writeln(generalTotality[i], generalTotality[j]);
+        for j := i to generalTotalityLength - amountOfSampling + 1 do
+        begin
+            for k := 0 to amountOfSampling - 2 do
+                write(generalTotality[i + k]);
+            write(generalTotality[j + amountOfSampling - 1]);
+            writeln;
+        end;
     end;
 end.
