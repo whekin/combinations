@@ -1,38 +1,34 @@
-﻿uses
-    combinations;
+﻿uses combinations;
 
 const
-    generalTotalityLength = 4; // max: 12 (for the integer type)
-    amountOfSampling = 2;
-    n = 100;
+    universeLength = 4; // max: 12 (for the integer type)
+    sampleSize = 2;
+    iterationCount = 100;
     
 var
-    generalTotality: array of integer;
-    combinations: array [,] of integer;
-    combinationsLength: integer;
-    numberOfRandomCombination: integer;
-    sum: integer;
-    i, j: integer;
+    universe: array of integer;
+    combinationsSet: array [,] of integer;
+    combinationsSetLength, numberOfRandomCombination, sum: integer;
     
 begin
-    setLength(generalTotality, generalTotalityLength);
+    setLength(universe, universeLength);
     
-    for i := 0 to generalTotalityLength - 1 do
-        generalTotality[i] := i + 1;
+    for var i := 0 to universeLength - 1 do
+        universe[i] := i + 1;
     
-    combinations := getCombinations(generalTotality, generalTotalityLength, amountOfSampling);
-    combinationsLength := length(combinations);
-    writeln('comb_length: ', combinationsLength / amountOfSampling);
-    for i := 0 to n - 1 do
+    combinationsSet := getCombinations(universe, universeLength, sampleSize);
+    combinationsSetLength := length(combinationsSet);
+
+    for var i := 0 to iterationCount - 1 do
     begin
         sum := 0;
-        numberOfRandomCombination := random(combinationsLength div amountOfSampling);
+        numberOfRandomCombination := random(combinationsSetLength div sampleSize);
         
-        for j := 0 to generalTotalityLength - 1 do
-            sum += generalTotality[j];
+        for var j := 0 to universeLength - 1 do
+            sum += universe[j];
             
-        for j := 0 to amountOfSampling - 1 do
-            sum += combinations[numberOfRandomCombination, j];
+        for var j := 0 to sampleSize - 1 do
+            sum += combinationsSet[numberOfRandomCombination, j];
         writeln(i + 1, ': ', sum);
     end;
 end.

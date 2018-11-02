@@ -1,41 +1,31 @@
 ﻿unit combinations;
 
-interface
-
 uses factorial;
 
 function getCombinations(
-    const generalTotality: array of integer;
-    generalTotalityLength: integer;
-    amountOfSampling: integer): array [,] of integer;
-
-implementation
-
-function getCombinations(
-    const generalTotality: array of integer;
-    generalTotalityLength: integer;
-    amountOfSampling: integer): array [,] of integer;
+    const universe: array of integer;
+    universeLength: integer;
+    sampleSize: integer): array [,] of integer;
 var 
-    outputTotality: array [,] of integer;
-    nth, amount, i, j, k: integer;
+    combinationsSet: array [,] of integer;
+    nth, numberOfCombinations: integer;
 
 begin
-    amount := fact(generalTotalityLength)
-              div (fact(amountOfSampling) * fact(generalTotalityLength - amountOfSampling));
-    setLength(outputTotality, amount, amountOfSampling);
+    numberOfCombinations := fact(universeLength)
+              div (fact(sampleSize) * fact(universeLength - sampleSize));
+              
+    setLength(combinationsSet, numberOfCombinations, sampleSize);
     
-    for i := 0 to generalTotalityLength - 2 do
-    begin
-        for j := i to generalTotalityLength - amountOfSampling do
+    for var i := 0 to universeLength - 2 do
+        for var j := i to universeLength - sampleSize do
         begin
-            for k := 0 to amountOfSampling - 2 do
-                totalityOfCombinations[nth, k] := generalTotality[i + k];
-            totalityOfCombinations[nth, amountOfSampling - 1] := generalTotality[j + amountOfSampling - 1];
+            for var k := 0 to sampleSize - 2 do
+                combinationsSet[nth, k] := universe[i + k];
+            combinationsSet[nth, sampleSize - 1] := universe[j + sampleSize - 1];
             nth += 1;
         end;
-    end;
     
-    getCombinations := totalityOfCombinations;
+    getCombinations := combinationsSet;
 end;
 
 end.

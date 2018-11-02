@@ -1,11 +1,5 @@
 ﻿unit factorial;
 
-interface
-
-function fact(num: integer): integer;
-
-implementation
-
 {num не должен быть больше 12, иначе произойдет переполнение integer}
 function fact(num: integer): integer;
 begin
