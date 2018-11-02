@@ -16,7 +16,7 @@ begin
     for var i := 0 to universeLength - 1 do
         universe[i] := i + 1;
     
-    combinationsSet := getCombinations(universe, universeLength, sampleSize);
+    combinationsSet := calcCombinations(universe, universeLength, sampleSize);
     combinationsSetLength := length(combinationsSet);
 
     for var i := 0 to iterationCount - 1 do
