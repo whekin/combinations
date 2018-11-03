@@ -8,7 +8,7 @@ const
 var
     universe: array of integer;
     combinationsSet: array [,] of integer;
-    combinationsSetLength, numberOfRandomCombination, sum: integer;
+    combinationsSetLength, numberRandomlyCombination, sum: integer;
     
 begin
     setLength(universe, universeLength);
@@ -22,13 +22,13 @@ begin
     for var i := 0 to iterationCount - 1 do
     begin
         sum := 0;
-        numberOfRandomCombination := random(combinationsSetLength div sampleSize);
+        numberRandomlyCombination := random(combinationsSetLength div sampleSize);
         
         for var j := 0 to universeLength - 1 do
             sum += universe[j];
             
         for var j := 0 to sampleSize - 1 do
-            sum += combinationsSet[numberOfRandomCombination, j];
+            sum += combinationsSet[numberRandomlyCombination, j];
         writeln(i + 1, ': ', sum);
     end;
 end.
