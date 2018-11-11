@@ -1,15 +1,17 @@
-﻿uses combinations;
+﻿unit test;
 
+uses combinations;
+
+function makeTest(iterationCount: integer): array of integer;
 const
     universeLength = 4; // max: 12 (for the integer type)
     sampleSize = 2;
-    iterationCount = 100;
     
 var
     universe: array of integer;
     combinationsSet: array [,] of integer;
     combinationsSetLength, numberRandomlyCombination, sum: integer;
-    
+    outArray: array of integer;
 begin
     setLength(universe, universeLength);
     
@@ -29,6 +31,11 @@ begin
             
         for var j := 0 to sampleSize - 1 do
             sum += combinationsSet[numberRandomlyCombination, j];
-        writeln(i + 1, ': ', sum);
+        setLength(outArray, i + 1);
+        outArray[i] := sum;
     end;
+    
+    makeTest := outArray;
+end;
+
 end.
