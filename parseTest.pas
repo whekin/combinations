@@ -31,7 +31,6 @@ begin
         
     end;
     
-    write('aaaa');
     setLength(res, len, 2);
     res[len - 1, 0] := arr[iterationCount - 1];
     res[len - 1, 1] := count;
