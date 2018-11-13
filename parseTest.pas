@@ -19,18 +19,23 @@ begin
         if arr[i] = arr[i - 1] then
         begin
             count += 1;
-            setLength(res, len, 2);
-            res[len - 1, 0] := arr[i];
-            res[len - 1, 1] := count;
-        end
-        else
+        end else
         begin
+            setLength(res, len, 2);
+            res[len - 1, 0] := arr[i - 1];
+            res[len - 1, 1] := count;
             count := 1;
+            
             len += 1;
         end;
         
     end;
     
+    write('aaaa');
+    setLength(res, len, 2);
+    res[len - 1, 0] := arr[iterationCount - 1];
+    res[len - 1, 1] := count;
+
     for var i := 0 to length(res) div 2 - 1 do
         res[i, 1] := round(res[i, 1] * 100 / iterationCount);
     
